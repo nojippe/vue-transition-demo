@@ -1,0 +1,25 @@
+.slide-fade-enter-active, .slide-fade-leave-active {
+  transition: opacity 5s;
+}
+
+.slide-fade-enter, .slide-fade-leave-to {
+  opacity: 0;
+}
+.day-list-move {
+  transition: transform 1s;
+}
+
+.cancel {
+  color: darkgoldenrod;
+  font-size: 2em;
+}
+.day-list li {
+  list-style: none;
+  padding: 10px;
+  margin: 20px;
+  box-shadow: 0 0 0 1px #c5d0d1;
+}
+
+.day-list li.end{
+  background-color:lightgray;
+}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" type="text/css" href="main.css">
+  <title>Vue.js transitionデモ</title>
+</head>
+<body>
+  <div id="app">
+      <p>setIntervalで{{ interval }}秒毎に放送終了時間が現在時間を過ぎているものを下に移動します。<br/>
+        debugMode=Trueの場合startDayIndexを最初の曜日として、放送終了時間を起動時から+10秒ずつプラスして設定します。<br/>
+        全ての曜日が放送終了と判断された場合、setIntervalに設定された処理をキャンセルします。</p>
+      <p>現在時間 : {{ nowDateTimeFormat }}</p>
+    <transition name="slide-fade">
+      <p v-if="cancel" class="cancel">setInterval終了</p>
+  </transition>
+    <button @click="shift">曜日を下へ</button>
+    <div class="channel">
+      <transition-group name="day-list" tag="ul" class="day-list">
+        <li v-for='(item, index) in dayList' v-bind:key="item.title" v-bind:class="{'end':item.endFlag}">
+          {{ item.title }}<br />放送終了時間：{{ item.endDateTime }}<br />放送終了フラグ:{{ item.endFlag }}
+        </li>
+      </transition-group>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+  <script src="./main.js"></script>
+</body>
+</html>
